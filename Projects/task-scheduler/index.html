@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Scheduler</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>📅 Task Scheduler</h1>
+            <p class="subtitle">Manage your tasks efficiently</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Sidebar - Input Section -->
+            <aside class="sidebar">
+                <div class="input-section">
+                    <h2>Add New Task</h2>
+                    
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title</label>
+                        <input 
+                            type="text" 
+                            id="taskTitle" 
+                            placeholder="Enter task title..."
+                            maxlength="50"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskDescription">Description</label>
+                        <textarea 
+                            id="taskDescription" 
+                            placeholder="Enter task description..."
+                            rows="4"
+                            maxlength="200"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskDate">Due Date</label>
+                            <input type="date" id="taskDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="taskTime">Time</label>
+                            <input type="time" id="taskTime">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskPriority">Priority</label>
+                            <select id="taskPriority">
+                                <option value="low">🟢 Low</option>
+                                <option value="medium" selected>🟡 Medium</option>
+                                <option value="high">🔴 High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskCategory">Category</label>
+                            <select id="taskCategory">
+                                <option value="work">💼 Work</option>
+                                <option value="personal">👤 Personal</option>
+                                <option value="health">🏥 Health</option>
+                                <option value="shopping">🛒 Shopping</option>
+                                <option value="other">📌 Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button id="addTaskBtn" class="btn btn-primary">Add Task</button>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="tasks">Active Tasks</button>
+                    <button class="tab-btn" data-tab="history">History</button>
+                </div>
+
+                <!-- Filter Section -->
+                <div id="filterSection" class="filter-section tab-content active">
+                    <h3>Filter & Sort</h3>
+                    <div class="filter-group">
+                        <label>
+                            <input type="radio" name="filter" value="all" checked> All Tasks
+                        </label>
+                        <label>
+                            <input type="radio" name="filter" value="pending"> Pending
+                        </label>
+                        <label>
+                            <input type="radio" name="filter" value="completed"> Completed
+                        </label>
+                    </div>
+
+                    <div class="filter-group">
+                        <label>Sort by:</label>
+                        <select id="sortBy">
+                            <option value="date-asc">Date (Earliest)</option>
+                            <option value="date-desc">Date (Latest)</option>
+                            <option value="priority">Priority</option>
+                            <option value="created">Created Date</option>
+                        </select>
+                    </div>
+
+                    <div class="button-group">
+                        <button id="applyFilterBtn" class="btn btn-primary">Apply Filter</button>
+                        <button id="resetFilterBtn" class="btn btn-secondary">Reset Filters</button>
+                    </div>
+                </div>
+
+                <!-- Filtered Tasks Section -->
+                <div id="filteredTasksSection" class="filter-section" style="display: none;">
+                    <h3>🎯 Filtered Tasks</h3>
+                    <div id="filteredTasksList" class="filtered-tasks-list">
+                        <!-- Filtered tasks will be shown here -->
+                    </div>
+                </div>
+
+                <!-- History Filter Section -->
+                <div id="historyFilterSection" class="filter-section tab-content">
+                    <h3>History Options</h3>
+                    <div class="filter-group">
+                        <button id="clearHistoryBtn" class="btn btn-danger">Clear All History</button>
+                    </div>
+                    <div class="filter-group">
+                        <label>Sort by:</label>
+                        <select id="historySortBy">
+                            <option value="date-desc">Most Recent</option>
+                            <option value="date-asc">Oldest First</option>
+                            <option value="name">Name (A-Z)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="stats-section">
+                    <h3>Statistics</h3>
+                    <div class="stat-item">
+                        <span class="stat-label">Total Tasks</span>
+                        <span class="stat-value" id="totalTasks">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Completed</span>
+                        <span class="stat-value completed" id="completedTasks">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Pending</span>
+                        <span class="stat-value pending" id="pendingTasks">0</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Right Content - Task List & History -->
+            <main class="task-list-container">
+                <div class="task-list-header">
+                    <h2 id="mainTitle">Tasks</h2>
+                    <input 
+                        type="text" 
+                        id="searchTasks" 
+                        class="search-input" 
+                        placeholder="Search tasks..."
+                    >
+                </div>
+
+                <!-- Tasks Tab -->
+                <div id="tasksTab" class="tab-content active">
+                    <div id="taskList" class="task-list">
+                        <!-- Tasks will be dynamically added here -->
+                    </div>
+
+                    <!-- Empty State -->
+                    <div id="emptyState" class="empty-state">
+                        <div class="empty-icon">📭</div>
+                        <p>No tasks yet. Create one to get started!</p>
+                    </div>
+                </div>
+
+                <!-- History Tab -->
+                <div id="historyTab" class="tab-content">
+                    <div id="historyList" class="history-details-list">
+                        <!-- History items will be dynamically added here -->
+                    </div>
+
+                    <!-- Empty History State -->
+                    <div id="emptyHistoryState" class="empty-state">
+                        <div class="empty-icon">📜</div>
+                        <p>No task history yet.</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Task Template (hidden) -->
+    <template id="taskTemplate">
+        <div class="task-card" data-task-id="">
+            <div class="task-checkbox">
+                <input type="checkbox" class="task-complete">
+            </div>
+            <div class="task-content">
+                <h3 class="task-title"></h3>
+                <p class="task-description"></p>
+                <div class="task-meta">
+                    <span class="task-date">📅 <span class="date-value"></span></span>
+                    <span class="task-time">🕐 <span class="time-value"></span></span>
+                    <span class="task-category"></span>
+                </div>
+            </div>
+            <div class="task-priority"></div>
+            <div class="task-actions">
+                <button class="btn-edit" title="Edit task">✏️</button>
+                <button class="btn-delete" title="Delete task">🗑️</button>
+            </div>
+        </div>
+    </template>
+
+    <!-- History Item Template (hidden) -->
+    <template id="historyTemplate">
+        <div class="history-detail-card" data-history-id="">
+            <div class="history-detail-header">
+                <div class="history-detail-title-section">
+                    <h3 class="history-detail-title"></h3>
+                    <span class="history-detail-status"></span>
+                </div>
+            </div>
+            <div class="history-detail-content">
+                <div class="history-detail-section">
+                    <h4>Description</h4>
+                    <p class="history-detail-description"></p>
+                </div>
+                <div class="history-detail-grid">
+                    <div class="history-detail-item">
+                        <span class="history-detail-label">📅 Due Date</span>
+                        <span class="history-detail-value due-date-value"></span>
+                    </div>
+                    <div class="history-detail-item">
+                        <span class="history-detail-label">🕐 Due Time</span>
+                        <span class="history-detail-value due-time-value"></span>
+                    </div>
+                    <div class="history-detail-item">
+                        <span class="history-detail-label">📌 Category</span>
+                        <span class="history-detail-value history-detail-category"></span>
+                    </div>
+                    <div class="history-detail-item">
+                        <span class="history-detail-label">⭐ Priority</span>
+                        <span class="history-detail-value history-detail-priority"></span>
+                    </div>
+                    <div class="history-detail-item">
+                        <span class="history-detail-label">✅ Completed/Deleted</span>
+                        <span class="history-detail-value completed-date-value"></span>
+                    </div>
+                    <div class="history-detail-item">
+                        <span class="history-detail-label">📝 Created</span>
+                        <span class="history-detail-value created-date-value"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="history-detail-actions">
+                <button class="btn-restore" title="Restore task">↩️ Restore</button>
+                <button class="btn-remove-history" title="Remove from history">🗑️ Remove</button>
+            </div>
+        </div>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+</html>
