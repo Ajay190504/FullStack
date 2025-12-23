@@ -1,0 +1,115 @@
+Operators Output Test :
+
+
+1. int a = 10; 	
+a += 5; //15
+a -= 3; //12
+a *= 2; //24
+a /= 4; //6	
+System.out.println(a); //6
+
+
+2. int a = 5, b = 10, c = 15; 
+System.out.println((a < b) && (b < c)); //true
+
+
+3. System.out.println((a > b) || (b < c)); //true
+System.out.println(!(a < c));	//false
+
+
+4. int x = 10, y = 20; 
+System.out.println(x++ + ++y); //31
+
+
+5. int a = 5, b = 2; 
+System.out.println(a % b); //1
+
+
+6. int p = 7, q = 3; 
+System.out.println(p * q + p / q); //23
+
+
+7. int n = 5; 
+System.out.println(++n + n++); //12
+
+
+8. int x = 5, y = 10; 
+System.out.println(x > y ? x : y); //10
+
+
+9. int a = 10, b = 5, c; 
+c = a++ + --b + a * b; 
+System.out.println(c); //58
+
+
+10. int a = 4, b = 2; 
+System.out.println(a << b); //16
+
+
+11. int a = 8, b = 2; 
+System.out.println(a >> b); //2
+
+
+12. int a = 10; System.out.println(~a); //-11
+
+
+13. int a = 5, b = 7; System.out.println(a & b); //5
+
+
+14. int a = 5, b = 7; System.out.println(a | b); //7
+
+
+15. int a = 5, b = 7; System.out.println(a ^ b); //2
+
+
+16. int a = 10; System.out.println(a++ + ++a + a--); //34
+
+
+17. int a = 1;
+ a += a++ + ++a; 
+System.out.println(a); //5
+
+
+18. int a = 5, b = 10; 
+boolean result = (a < b) ? true : false; 
+System.out.println(result); //true
+
+
+19. int a = 5, b = 10; System.out.println(a == b); //false
+
+
+20. int a = 3, b = 2; System.out.println(a * b + a / b); //7
+
+
+21. int a = 5; a = a++ + ++a; System.out.println(a); //12
+
+
+22. int a = 10, b = 5; System.out.println(a > b && a != b); //true
+
+
+23. int x = 2, y = 3; x *= y + 1; System.out.println(x); //7
+
+
+24. int a = 5; 
+a += a -= a *= a; 
+System.out.println(a); //-15
+
+
+25. int a = 4, b = 3; 
+System.out.println(a > b ? a++ : ++b); //a=4 //next statement a=5
+
+
+26. int a = 5; System.out.println(a++ + a++ + ++a); //19
+
+
+27. int a = 2, b = 3; System.out.println(a + b * a / b); //4
+
+
+28. int a = 10, b = 20; System.out.println(a < b && b > a); //true
+
+
+29. int a = 6, b = 2; System.out.println((a / b) * (a % b)); //0
+
+
+30. int a = 5, b = 10, c = 15; System.out.println((a < b && b > c) || !(b < c)); //false
+
