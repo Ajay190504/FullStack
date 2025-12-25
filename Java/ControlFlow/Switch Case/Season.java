@@ -1,5 +1,5 @@
 
-class Season {
+public class Season {
     public static void main(String[] args) {
         
         int month = 5;
