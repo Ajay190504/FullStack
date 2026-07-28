@@ -1,11 +1,15 @@
 import { useState } from "react";
 import StdForm from "./components/StdForm";
+import StudentData from "./components/StudentData";
 function App() {
   
-  return (
+      return (
+  <center>
     <div>
-      <StdForm />
+      {/* <StdForm /> */}
+      <StudentData />
     </div>
+    </center>
   );
 }
 

@@ -1,0 +1,77 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "Ajay Waghmare",
+      "email": "ajay@example.com",
+      "password": "Ajay123",
+      "salary": "60000",
+      "role": "Java Full Stack Developer"
+    },
+    {
+      "id": "2",
+      "name": "Rahul Patil",
+      "email": "rahul@example.com",
+      "password": "Rahul123",
+      "salary": "55000",
+      "role": "Frontend Developer"
+    },
+    {
+      "id": "3",
+      "name": "Sneha Sharma",
+      "email": "sneha@example.com",
+      "password": "Sneha123",
+      "salary": "70000",
+      "role": "Backend Developer"
+    },
+    {
+      "id": "6",
+      "name": "Neha Kulkarni",
+      "email": "neha@example.com",
+      "password": "Neha123",
+      "salary": "72000",
+      "role": "QA Engineer"
+    },
+    {
+      "id": "7",
+      "name": "Rohan Mehta",
+      "email": "rohan@example.com",
+      "password": "Rohan123",
+      "salary": "68000",
+      "role": "DevOps Engineer"
+    },
+    {
+      "id": "8",
+      "name": "Kiran Pawar",
+      "email": "kiran@example.com",
+      "password": "Kiran123",
+      "salary": "58000",
+      "role": "Software Engineer"
+    },
+    {
+      "id": "9",
+      "name": "Pooja Singh",
+      "email": "pooja@example.com",
+      "password": "Pooja123",
+      "salary": "63000",
+      "role": "Business Analyst"
+    },
+    {
+      "id": "10",
+      "name": "Vikas Gupta",
+      "email": "vikas@example.com",
+      "password": "Vikas123",
+      "salary": "90000",
+      "role": "Technical Lead"
+    },
+    {
+      "name": "Ajay",
+      "email": "ajaywaghmare190504@gmail.com",
+      "password": "12nfks3",
+      "salary": 1234,
+      "role": "Dev",
+      "id": "8nVI2RLgNdI"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
